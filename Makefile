@@ -4,6 +4,7 @@ SRCS	= ./sources/main.c		\
 	  ./sources/layers.c		\
 	  ./sources/sdl_init.c		\
 	  ./sources/print_pixel.c	\
+	  ./sources/print_ligne.c	\
 	  ./sources/print_square.c	\
 	  ./sources/print_circle.c	\
 	  ./sources/print_disc.c	\
