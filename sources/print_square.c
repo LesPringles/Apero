@@ -1,5 +1,8 @@
 #include "../includes/display.h"
 
+
+
+
 static int		set_start_pos(SDL_Rect **p, Uint16 x, Uint16 y)
 {
   if ((*p = malloc(sizeof(SDL_Rect))) == NULL)

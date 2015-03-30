@@ -1,7 +1,7 @@
 #include "../includes/display.h"
 #include <math.h>
 
-void setPixel(t_display *display, int x, int y, Uint32 coul)
+/*void setPixel(t_display *display, int x, int y, Uint32 coul)
 {
   *((Uint32*)(display->screen->pixels) + x + y * WINX) = coul;
 }
@@ -12,7 +12,8 @@ void setPixelVerif(t_display *display, int x, int y, Uint32 coul)
   if (x >= 0 && x < WINX &&
       y >= 0 && y < WINY)
     setPixel(display, x, y, coul);
-}
+}*/
+
 void cercle(t_display *display, int cx, int cy, long rayon, Uint32 coul)
 {
   int d, y, x;
@@ -93,7 +94,7 @@ void initCouleurs(void)
   if ((square = SDL_CreateRGBSurface(0, 0, 0, 32, 0, 0, 0, 0)) == NULL)
     return -1;
 
-  cercle(display, cx, cy, r, SDL_MapRGB(square->format, 255, 255, 255));
+  cercle(display, cx, cy, r, SDL_MapRGB(square->format, 255, 0, 255));
 
   if (SDL_BlitSurface(square, NULL, display->screen, pos) == -1)
     return -1;

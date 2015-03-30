@@ -4,6 +4,7 @@
  const t_action	actions[] =
   {
     {PRINT_PIXEL, &print_pixel},
+	{PRINT_LIGNE, &print_ligne},
     {PRINT_SQUARE, &print_square},
 	{PRINT_CIRCLE, &print_circle},
 	{PRINT_DISC, &print_disc}
