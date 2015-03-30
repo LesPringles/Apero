@@ -4,6 +4,8 @@
 #include "../includes/display.h"
 #include "../includes/shapes.h"
 
+
+
 static int	manage_mouse_event(SDL_Event *event, t_display *display)
 {
   (void)display;
@@ -28,6 +30,8 @@ static int	manage_mouse_event(SDL_Event *event, t_display *display)
 static int	manage_key_event(SDL_Event *event, t_display *display)
 {
   (void)display;
+	//unsigned int i = 0;
+
   switch ((int)event->key.keysym.sym)
     {
     case SDLK_ESCAPE:
@@ -36,7 +40,7 @@ static int	manage_key_event(SDL_Event *event, t_display *display)
     case SDLK_SPACE:
       display->button = RELEASED;
       do_action(display, &event->button);
-      display->action = !display->action; // TODO Doesn't work with more than 2 actions
+	  display->action = display->action + 1;
       break;
     default:
       break;
@@ -73,7 +77,7 @@ int		init_sdl()
   t_display	display;
 
   display.layers = NULL;
-  display.action = PRINT_SQUARE;
+  display.action = PRINT_PIXEL;
   display.button = RELEASED;
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return -1;

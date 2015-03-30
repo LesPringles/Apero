@@ -11,27 +11,28 @@ enum {
   NB_COULEURS
 };
 
-SDL_Surface* affichage;
+
+SDL_Surface* square;
 Uint32 couleurs[NB_COULEURS];
 
 void initCouleurs(void)
 {
-  couleurs[C_NOIR]          = SDL_MapRGB(affichage->format, 0x00, 0x00, 0x00);
-  couleurs[C_BLEU_FONCE]    = SDL_MapRGB(affichage->format, 0x00, 0x00, 0x80);
-  couleurs[C_VERT_FONCE]    = SDL_MapRGB(affichage->format, 0x00, 0x80, 0x00);
-  couleurs[C_CYAN_FONCE]    = SDL_MapRGB(affichage->format, 0x00, 0x80, 0x80);
-  couleurs[C_ROUGE_FONCE]   = SDL_MapRGB(affichage->format, 0x80, 0x00, 0x00);
-  couleurs[C_MAGENTA_FONCE] = SDL_MapRGB(affichage->format, 0x80, 0x00, 0x80);
-  couleurs[C_OCRE]          = SDL_MapRGB(affichage->format, 0x80, 0x80, 0x00);
-  couleurs[C_GRIS_CLAIR]    = SDL_MapRGB(affichage->format, 0xC0, 0xC0, 0xC0);
-  couleurs[C_GRIS]          = SDL_MapRGB(affichage->format, 0x80, 0x80, 0x80);
-  couleurs[C_BLEU]          = SDL_MapRGB(affichage->format, 0x00, 0x00, 0xFF);
-  couleurs[C_VERT]          = SDL_MapRGB(affichage->format, 0x00, 0xFF, 0x00);
-  couleurs[C_CYAN]          = SDL_MapRGB(affichage->format, 0x00, 0xFF, 0xFF);
-  couleurs[C_ROUGE]         = SDL_MapRGB(affichage->format, 0xFF, 0x00, 0x00);
-  couleurs[C_MAGENTA]       = SDL_MapRGB(affichage->format, 0xFF, 0x00, 0xFF);
-  couleurs[C_JAUNE]         = SDL_MapRGB(affichage->format, 0xFF, 0xFF, 0x00);
-  couleurs[C_BLANC]         = SDL_MapRGB(affichage->format, 0xFF, 0xFF, 0xFF);
+  couleurs[C_NOIR]          = SDL_MapRGB(square->format, 0x00, 0x00, 0x00);
+  couleurs[C_BLEU_FONCE]    = SDL_MapRGB(square->format, 0x00, 0x00, 0x80);
+  couleurs[C_VERT_FONCE]    = SDL_MapRGB(square->format, 0x00, 0x80, 0x00);
+  couleurs[C_CYAN_FONCE]    = SDL_MapRGB(square->format, 0x00, 0x80, 0x80);
+  couleurs[C_ROUGE_FONCE]   = SDL_MapRGB(square->format, 0x80, 0x00, 0x00);
+  couleurs[C_MAGENTA_FONCE] = SDL_MapRGB(square->format, 0x80, 0x00, 0x80);
+  couleurs[C_OCRE]          = SDL_MapRGB(square->format, 0x80, 0x80, 0x00);
+  couleurs[C_GRIS_CLAIR]    = SDL_MapRGB(square->format, 0xC0, 0xC0, 0xC0);
+  couleurs[C_GRIS]          = SDL_MapRGB(square->format, 0x80, 0x80, 0x80);
+  couleurs[C_BLEU]          = SDL_MapRGB(square->format, 0x00, 0x00, 0xFF);
+  couleurs[C_VERT]          = SDL_MapRGB(square->format, 0x00, 0xFF, 0x00);
+  couleurs[C_CYAN]          = SDL_MapRGB(square->format, 0x00, 0xFF, 0xFF);
+  couleurs[C_ROUGE]         = SDL_MapRGB(square->format, 0xFF, 0x00, 0x00);
+  couleurs[C_MAGENTA]       = SDL_MapRGB(square->format, 0xFF, 0x00, 0xFF);
+  couleurs[C_JAUNE]         = SDL_MapRGB(square->format, 0xFF, 0xFF, 0x00);
+  couleurs[C_BLANC]         = SDL_MapRGB(square->format, 0xFF, 0xFF, 0xFF);
 }
 
 #endif /* !COULEURS_H_ */

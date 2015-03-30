@@ -9,7 +9,9 @@
 typedef enum	e_current_action
   {
     PRINT_PIXEL = 0,
-    PRINT_SQUARE
+    PRINT_SQUARE,
+	PRINT_CIRCLE,
+	PRINT_DISC
   }		t_current_action;
 
 typedef enum	e_button_state

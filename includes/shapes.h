@@ -5,5 +5,8 @@
 
 int	print_pixel(t_display *display, void *param);
 int	print_square(t_display *display, void *param);
+int print_circle(t_display *display, void *param);
+int print_disc(t_display *display, void *param);
+
 
 #endif /* !SHAPES_H_ */
