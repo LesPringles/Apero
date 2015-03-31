@@ -1,14 +1,14 @@
 #include "../includes/display.h"
 #include "../includes/shapes.h"
 
- const t_action	actions[] =
+static const t_action	actions[] =
   {
     {PRINT_PIXEL, &print_pixel},
-	{PRINT_LIGNE, &print_ligne},
+    {PRINT_LIGNE, &print_ligne},
     {PRINT_SQUARE, &print_square},
-  	{PRINT_RECT, &print_rect},
-	{PRINT_CIRCLE, &print_circle},
-	{PRINT_DISC, &print_disc}
+    {PRINT_RECT, &print_rect},
+    {PRINT_CIRCLE, &print_circle},
+    {PRINT_DISC, &print_disc}
   };
 
 int		do_action(t_display *display, void *param)

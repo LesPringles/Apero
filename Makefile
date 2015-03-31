@@ -9,11 +9,12 @@ SRCS	= ./sources/main.c		\
 	  ./sources/print_rect.c	\
 	  ./sources/print_circle.c	\
 	  ./sources/print_disc.c	\
-	  ./sources/do_action.c
+	  ./sources/do_action.c		\
+	  ./sources/save.c
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+= -W -Wall -Wextra -g
+CFLAGS	+= -W -Wall -Wextra
 
 OPTIONS	+= -lSDL -lSDL_mixer -lm
 

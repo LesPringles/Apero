@@ -4,8 +4,6 @@
 #include "../includes/display.h"
 #include "../includes/shapes.h"
 
-
-
 static int	manage_mouse_event(SDL_Event *event, t_display *display)
 {
   (void)display;
@@ -30,7 +28,7 @@ static int	manage_mouse_event(SDL_Event *event, t_display *display)
 static int	manage_key_event(SDL_Event *event, t_display *display)
 {
   (void)display;
-	//unsigned int i = 0;
+  //unsigned int i = 0;
 
   switch ((int)event->key.keysym.sym)
     {
@@ -40,32 +38,32 @@ static int	manage_key_event(SDL_Event *event, t_display *display)
     case SDLK_SPACE:
       display->button = RELEASED;
       do_action(display, &event->button);
-	  if (display->action == 5)
-		{
-			display->action = -1;
-		}
-	  display->action = display->action + 1;
+      if (display->action == 5)
+	{
+	  display->action = -1;
+	}
+      display->action = display->action + 1;
 
       break;
-	case SDLK_n:
-	  //TODO Nouveau display
-	  break;
-	case SDLK_o:
-	  //TODO Ouvrir une image
-	  break;
-	case SDLK_BACKSPACE:
-	  //TODO Retour en Arriere : Undo
-	  break;
-	case SDLK_s:
-	  //TODO Sauvegarder
-	  		if (SDL_SaveBMP(display->screen,"ressources/out.bmp") == -1)
-	  break;
-	case SDLK_c:
-	  //TODO Changer de couleurs
-	  break;
-	case SDLK_t:
-	  //TODO Changerla taille du pinceau
-	  break;
+    case SDLK_n:
+      //TODO Nouveau display
+      break;
+    case SDLK_o:
+      //TODO Ouvrir une image
+      break;
+    case SDLK_BACKSPACE:
+      //TODO Retour en Arriere : Undo
+      break;
+    case SDLK_s:
+      if (save(display->screen, "ressources/out.bmp") == -1)
+	return -1;
+      break ;
+    case SDLK_c:
+      //TODO Changer de couleurs
+      break;
+    case SDLK_t:
+      //TODO Changerla taille du pinceau
+      break;
 
     default:
       break;

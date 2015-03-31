@@ -6,15 +6,14 @@
 # define WINX	1280
 # define WINY	720
 
-
 typedef enum	e_current_action
   {
     PRINT_PIXEL = 0,
-	PRINT_LIGNE,
+    PRINT_LIGNE,
     PRINT_SQUARE,
-	PRINT_RECT,
-	PRINT_CIRCLE,
-	PRINT_DISC
+    PRINT_RECT,
+    PRINT_CIRCLE,
+    PRINT_DISC
   }		t_current_action;
 
 typedef enum	e_button_state
@@ -54,6 +53,8 @@ int		init_sdl();
 int		display_layers(t_display *display);
 int		add_layer(t_layers_list **list, SDL_Surface *layer, SDL_Rect *pos);
 int		do_action(t_display *display, void *param);
-void 	setPixelVerif(t_display *display, int x, int y, Uint32 coul);
+void		setPixelVerif(t_display *display, int x, int y, Uint32 coul);
+
+int		save(SDL_Surface *surface, char *filename);
 
 #endif /* !DISPLAY_H_ */

@@ -2,9 +2,9 @@
 #include <math.h>
 
 /*void setPixel(t_display *display, int x, int y, Uint32 coul)
-{
+  {
   *((Uint32*)(display->screen->pixels) + x + y * WINX) = coul;
-}
+  }
 
 
 void setPixelVerif(t_display *display, int x, int y, Uint32 coul)
@@ -24,7 +24,7 @@ void cercle(t_display *display, int cx, int cy, long rayon, Uint32 coul)
 
 
 
-while (y >= x) {
+  while (y >= x) {
     setPixelVerif(display, cx + x, cy + y, coul);
     setPixelVerif(display, cx + y, cy + x, coul);
     setPixelVerif(display, cx - x, cy + y, coul);
@@ -34,7 +34,7 @@ while (y >= x) {
     setPixelVerif(display, cx - x, cy - y, coul);
     setPixelVerif(display, cx - y, cy - x, coul);
 
-if (d < 0)
+    if (d < 0)
       d = d + (4 * x) + 6;
     else {
       d = d + 4 * (x - y) + 10;
@@ -62,7 +62,7 @@ static int		display_circle(t_display *display, SDL_Rect *pos, int cx, int cy, lo
   C_NOIR, C_BLEU_FONCE, C_VERT_FONCE, C_CYAN_FONCE, C_ROUGE_FONCE,
   C_MAGENTA_FONCE, C_OCRE, C_GRIS_CLAIR, C_GRIS, C_BLEU, C_VERT,
   C_CYAN, C_ROUGE, C_MAGENTA, C_JAUNE, C_BLANC,
-  
+
   NB_COULEURS
 };
 
