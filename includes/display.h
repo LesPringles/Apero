@@ -56,5 +56,6 @@ int		do_action(t_display *display, void *param);
 void		setPixelVerif(t_display *display, int x, int y, Uint32 coul);
 
 int		save(SDL_Surface *surface, char *filename);
+int		new(SDL_Surface *surface);
 
 #endif /* !DISPLAY_H_ */

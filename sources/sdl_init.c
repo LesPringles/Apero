@@ -46,7 +46,8 @@ static int	manage_key_event(SDL_Event *event, t_display *display)
 
       break;
     case SDLK_n:
-      //TODO Nouveau display
+      if (new(display->screen) == -1)
+	return -1;
       break;
     case SDLK_o:
       //TODO Ouvrir une image
@@ -107,6 +108,8 @@ int		init_sdl()
   if ((display.screen = SDL_SetVideoMode(WINX, WINY, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL)
     return -1;
   SDL_WM_SetCaption("Apero", NULL);
+  if (new(display.screen) == -1)
+    return -1;
   sdl_loop(&display);
   SDL_Quit();
   return 0;

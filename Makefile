@@ -10,7 +10,8 @@ SRCS	= ./sources/main.c		\
 	  ./sources/print_circle.c	\
 	  ./sources/print_disc.c	\
 	  ./sources/do_action.c		\
-	  ./sources/save.c
+	  ./sources/save.c		\
+	  ./sources/new.c
 
 OBJS	= $(SRCS:.c=.o)
 
