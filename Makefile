@@ -6,6 +6,7 @@ SRCS	= ./sources/main.c		\
 	  ./sources/print_pixel.c	\
 	  ./sources/print_ligne.c	\
 	  ./sources/print_square.c	\
+	  ./sources/print_rect.c	\
 	  ./sources/print_circle.c	\
 	  ./sources/print_disc.c	\
 	  ./sources/do_action.c
@@ -22,6 +23,6 @@ $(NAME): $(OBJS)
 	gcc $(OBJS) -o $(NAME) $(OPTIONS) 
 
 clean:
-	rm -f $(OBJS) $(NAME)
+	rm -f $(OBJS) $(NAME) out.bmp
 
 re: clean all

@@ -1,6 +1,8 @@
 #include <SDL/SDL.h>
 
 #include "../includes/display.h"
+#include "../includes/couleurs.h"
+
 
 int			print_pixel(t_display *display, void *param)
 {
@@ -15,7 +17,7 @@ int			print_pixel(t_display *display, void *param)
   pos.y = mouse->y - 2;
   if ((pixel = SDL_CreateRGBSurface(0, 2, 2, 32, 0, 0, 0, 0)) == NULL)
     return -1;
-  if (SDL_FillRect(pixel, NULL, SDL_MapRGB(pixel->format, 255, 255, 255)) == -1)
+  if (SDL_FillRect(pixel, NULL, couleurs[C_BLANC]) == -1)
     return -1;
   if (SDL_BlitSurface(pixel, NULL, display->screen, &pos) == -1)
     return -1;

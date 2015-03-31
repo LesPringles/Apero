@@ -12,6 +12,7 @@ typedef enum	e_current_action
     PRINT_PIXEL = 0,
 	PRINT_LIGNE,
     PRINT_SQUARE,
+	PRINT_RECT,
 	PRINT_CIRCLE,
 	PRINT_DISC
   }		t_current_action;

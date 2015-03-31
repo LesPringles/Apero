@@ -1,5 +1,8 @@
 #include "../includes/display.h"
 
+
+
+
 static int		set_start_pos(SDL_Rect **p, Uint16 x, Uint16 y)
 {
   if ((*p = malloc(sizeof(SDL_Rect))) == NULL)
@@ -9,7 +12,7 @@ static int		set_start_pos(SDL_Rect **p, Uint16 x, Uint16 y)
   return 0;
 }
 
-static int		display_square(t_display *display, SDL_Rect *pos, int w, int h)
+static int		display_rect(t_display *display, SDL_Rect *pos, int w, int h)
 {
   SDL_Surface		*square;
 
@@ -33,7 +36,7 @@ static int		get_h(SDL_Rect *start, SDL_Rect *end)
   return abs(end->y - start->y);
 }
 
-int			print_square(t_display *display, void *param)
+int			print_rect(t_display *display, void *param)
 {
   static t_button_state	last_state = UNSET;
   static SDL_Rect	*start_pos = NULL;
@@ -59,7 +62,7 @@ int			print_square(t_display *display, void *param)
       start_pos = NULL;
       return 0;
     }
-  return display_square(display,
+  return display_rect(display,
 			((pos.x > start_pos->x) ? start_pos : &pos),
 			get_w(start_pos, &pos),
 			get_h(start_pos, &pos));

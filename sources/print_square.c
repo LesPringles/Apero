@@ -31,17 +31,12 @@ static int		get_w(SDL_Rect *start, SDL_Rect *end)
   return abs(end->x - start->x);
 }
 
-static int		get_h(SDL_Rect *start, SDL_Rect *end)
-{
-  return abs(end->y - start->y);
-}
-
 int			print_square(t_display *display, void *param)
 {
   static t_button_state	last_state = UNSET;
   static SDL_Rect	*start_pos = NULL;
   SDL_MouseButtonEvent	*mouse;
-  SDL_Rect		pos;
+  SDL_Rect		pos, origin;
 
   mouse = (SDL_MouseButtonEvent *)param;
   pos.x = mouse->x;
@@ -62,8 +57,30 @@ int			print_square(t_display *display, void *param)
       start_pos = NULL;
       return 0;
     }
-  return display_square(display,
-			((pos.x > start_pos->x) ? start_pos : &pos),
-			get_w(start_pos, &pos),
-			get_h(start_pos, &pos));
+
+  if(pos.x > start_pos->x) 
+  { 
+		if(pos.y > start_pos->y) 
+			return display_square(display, start_pos, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+
+		else 
+		{ 
+			origin.x = start_pos->x; 
+			origin.y = pos.y; 
+			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+		} 
+
+  } 
+  else 
+  { 
+		if(pos.y > start_pos->y) 
+		{ 
+			origin.x = pos.x; 
+			origin.y = start_pos->y; 
+			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+		}
+		else 
+			return display_square(display, &pos, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+  }
+  
 }
