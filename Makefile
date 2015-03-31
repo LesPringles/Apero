@@ -23,6 +23,9 @@ $(NAME): $(OBJS)
 	gcc $(OBJS) -o $(NAME) $(OPTIONS) 
 
 clean:
-	rm -f $(OBJS) $(NAME) out.bmp
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
 
 re: clean all
