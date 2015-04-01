@@ -90,41 +90,56 @@ int			print_disc(t_display *display, void *param)
 {
   static t_button_state	last_state = UNSET;
   static SDL_Rect	*start_pos = NULL;
+  static SDL_Surface	*original_screen = NULL; // SAVE FOR APERCU
   SDL_MouseButtonEvent	*mouse;
   SDL_Rect		pos;
+  SDL_Rect		pos_0;
 
+  pos_0.x = 0;
+  pos_0.y = 0;
   mouse = (SDL_MouseButtonEvent *)param;
   pos.x = mouse->x;
   pos.y = mouse->y;
+
   if (last_state == UNSET && display->button == RELEASED)
     return (0);
+
   if ((start_pos == NULL)
       && ((last_state == UNSET) || (last_state == RELEASED))
       && (display->button == PRESSED))
     {
       last_state = PRESSED;
+	  if ((original_screen = SDL_CreateRGBSurface(0, WINX, WINY, 32, 0, 0, 0, 0)) == NULL)
+	return -1;
+      if (SDL_BlitSurface(display->screen, NULL, original_screen, &pos_0) == -1)
+	return -1;
       if (set_start_pos(&start_pos, mouse->x, mouse->y) == -1)
 	return -1;
 
 
     }
 
-	if (last_state == PRESSED && display->button == RELEASED)
-	{
-		last_state = RELEASED;
-		return display_disc(display,
-			((pos.x > start_pos->x) ? &pos : start_pos),
-			mouse->x,
-			mouse->y,
-			get_r(start_pos, &pos));
-	}
 
   if (display->button == RELEASED)
     {
+	  // SAVE LAYER
+      if (last_state == PRESSED)
+		if (add_layer(&display->layers, display->screen, &pos_0) == -1)
+	  		return -1;
       last_state = RELEASED;
+      original_screen = NULL;
       start_pos = NULL;
       return 0;
     }
 
-	return 0;
+	  if (SDL_BlitSurface(original_screen, NULL, display->screen, &pos_0) == -1)
+    return -1;
+  // END APERCU
+
+
+      return display_disc(display,
+			    ((pos.x > start_pos->x) ? &pos : start_pos),
+			    mouse->x,
+			    mouse->y,
+			    get_r(start_pos, &pos));
 }

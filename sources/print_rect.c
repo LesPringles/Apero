@@ -42,6 +42,7 @@ int			print_rect(t_display *display, void *param)
   SDL_MouseButtonEvent	*mouse;
   SDL_Rect		pos;
   SDL_Rect		pos_0;
+  SDL_Rect		origin;
 
   pos_0.x = 0;
   pos_0.y = 0;
@@ -68,19 +69,42 @@ int			print_rect(t_display *display, void *param)
     {
       // SAVE LAYER
       if (last_state == PRESSED)
-	if (add_layer(&display->layers, display->screen, &pos_0) == -1)
-	  return -1;
+		if (add_layer(&display->layers, display->screen, &pos_0) == -1)
+	  		return -1;
       last_state = RELEASED;
       original_screen = NULL;
       start_pos = NULL;
       return 0;
     }
   // BEGIN APERCU
+
   if (SDL_BlitSurface(original_screen, NULL, display->screen, &pos_0) == -1)
     return -1;
   // END APERCU
-  return display_rect(display,
-		      ((pos.x > start_pos->x) ? start_pos : &pos),
-		      get_w(start_pos, &pos),
-		      get_h(start_pos, &pos));
+
+    if(pos.x > start_pos->x)
+    {
+		if(pos.y > start_pos->y)
+			return display_rect(display, start_pos, get_w(start_pos, &pos), get_h(start_pos, &pos));
+
+		else
+		{
+			origin.x = start_pos->x;
+			origin.y = pos.y;
+			return display_rect(display, &origin, get_w(start_pos, &pos), get_h(start_pos, &pos));
+		}
+
+    }
+  else
+  {
+		if(pos.y > start_pos->y)
+		{
+			origin.x = pos.x;
+			origin.y = start_pos->y;
+			return display_rect(display, &origin, get_w(start_pos, &pos), get_h(start_pos, &pos));
+		}
+		else
+			return display_rect(display, &pos, get_w(start_pos, &pos), get_h(start_pos, &pos));
+  }
+
 }
