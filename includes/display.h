@@ -37,6 +37,7 @@ typedef struct		s_display
   t_layers_list		*layers;
   t_current_action	action;
   t_button_state	button;
+  int			color_index;
 }			t_display;
 
 typedef int		(*t_action_fptr)(t_display *, void *);
@@ -57,5 +58,7 @@ void		setPixelVerif(t_display *display, int x, int y, Uint32 coul);
 
 int		save(SDL_Surface *surface, char *filename);
 int		new(SDL_Surface *surface);
+int		undo(t_display *display);
+int		redo(t_display *display);
 
 #endif /* !DISPLAY_H_ */

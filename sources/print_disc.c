@@ -1,5 +1,7 @@
-#include "../includes/display.h"
 #include <math.h>
+
+#include "../includes/display.h"
+#include "../includes/couleurs.h"
 
 /*void setPixel(t_display *display, int x, int y, Uint32 coul)
 {
@@ -67,43 +69,10 @@ static int		display_disc(t_display *display, SDL_Rect *pos, int cx, int cy, long
 {
   SDL_Surface		*square;
 
-/*enum {
-  C_NOIR, C_BLEU_FONCE, C_VERT_FONCE, C_CYAN_FONCE, C_ROUGE_FONCE,
-  C_MAGENTA_FONCE, C_OCRE, C_GRIS_CLAIR, C_GRIS, C_BLEU, C_VERT,
-  C_CYAN, C_ROUGE, C_MAGENTA, C_JAUNE, C_BLANC,
-  
-  NB_COULEURS
-};
-
-Uint32 couleurs[NB_COULEURS];
-
-void initCouleurs(void)
-{
-	SDL_Surface *square;
-
-  couleurs[C_NOIR]          = SDL_MapRGB(square->format, 0x00, 0x00, 0x00);
-  couleurs[C_BLEU_FONCE]    = SDL_MapRGB(square->format, 0x00, 0x00, 0x80);
-  couleurs[C_VERT_FONCE]    = SDL_MapRGB(square->format, 0x00, 0x80, 0x00);
-  couleurs[C_CYAN_FONCE]    = SDL_MapRGB(square->format, 0x00, 0x80, 0x80);
-  couleurs[C_ROUGE_FONCE]   = SDL_MapRGB(square->format, 0x80, 0x00, 0x00);
-  couleurs[C_MAGENTA_FONCE] = SDL_MapRGB(square->format, 0x80, 0x00, 0x80);
-  couleurs[C_OCRE]          = SDL_MapRGB(square->format, 0x80, 0x80, 0x00);
-  couleurs[C_GRIS_CLAIR]    = SDL_MapRGB(square->format, 0xC0, 0xC0, 0xC0);
-  couleurs[C_GRIS]          = SDL_MapRGB(square->format, 0x80, 0x80, 0x80);
-  couleurs[C_BLEU]          = SDL_MapRGB(square->format, 0x00, 0x00, 0xFF);
-  couleurs[C_VERT]          = SDL_MapRGB(square->format, 0x00, 0xFF, 0x00);
-  couleurs[C_CYAN]          = SDL_MapRGB(square->format, 0x00, 0xFF, 0xFF);
-  couleurs[C_ROUGE]         = SDL_MapRGB(square->format, 0xFF, 0x00, 0x00);
-  couleurs[C_MAGENTA]       = SDL_MapRGB(square->format, 0xFF, 0x00, 0xFF);
-  couleurs[C_JAUNE]         = SDL_MapRGB(square->format, 0xFF, 0xFF, 0x00);
-  couleurs[C_BLANC]         = SDL_MapRGB(square->format, 255, 255, 255);
-}*/
-
-
   if ((square = SDL_CreateRGBSurface(0, 0, 0, 32, 0, 0, 0, 0)) == NULL)
     return -1;
 
-  disc(display, cx, cy, r, SDL_MapRGB(square->format, 255, 255, 255));
+  disc(display, cx, cy, r, colors[display->color_index]);
 
   if (SDL_BlitSurface(square, NULL, display->screen, pos) == -1)
     return -1;

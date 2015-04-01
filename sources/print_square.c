@@ -1,8 +1,5 @@
 #include "../includes/display.h"
 
-
-
-
 static int		set_start_pos(SDL_Rect **p, Uint16 x, Uint16 y)
 {
   if ((*p = malloc(sizeof(SDL_Rect))) == NULL)
@@ -58,29 +55,29 @@ int			print_square(t_display *display, void *param)
       return 0;
     }
 
-  if(pos.x > start_pos->x) 
-  { 
-		if(pos.y > start_pos->y) 
-			return display_square(display, start_pos, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+  if(pos.x > start_pos->x)
+  {
+		if(pos.y > start_pos->y)
+			return display_square(display, start_pos, get_w(start_pos, &pos), get_w(start_pos, &pos));
 
-		else 
-		{ 
-			origin.x = start_pos->x; 
-			origin.y = pos.y; 
-			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
-		} 
-
-  } 
-  else 
-  { 
-		if(pos.y > start_pos->y) 
-		{ 
-			origin.x = pos.x; 
-			origin.y = start_pos->y; 
-			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+		else
+		{
+			origin.x = start_pos->x;
+			origin.y = pos.y;
+			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos));
 		}
-		else 
-			return display_square(display, &pos, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+
   }
-  
+  else
+  {
+		if(pos.y > start_pos->y)
+		{
+			origin.x = pos.x;
+			origin.y = start_pos->y;
+			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos));
+		}
+		else
+			return display_square(display, &pos, get_w(start_pos, &pos), get_w(start_pos, &pos));
+  }
+
 }

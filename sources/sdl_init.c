@@ -3,6 +3,7 @@
 
 #include "../includes/display.h"
 #include "../includes/shapes.h"
+#include "../includes/couleurs.h"
 
 static int	manage_mouse_event(SDL_Event *event, t_display *display)
 {
@@ -24,6 +25,14 @@ static int	manage_mouse_event(SDL_Event *event, t_display *display)
     }
   return 0;
 }
+
+static void	change_color(t_display *display)
+{
+  display->color_index++;
+  if (display->color_index > NB_COLORS)
+    display->color_index = 0;
+}
+
 
 static int	manage_key_event(SDL_Event *event, t_display *display)
 {
@@ -53,14 +62,19 @@ static int	manage_key_event(SDL_Event *event, t_display *display)
       //TODO Ouvrir une image
       break;
     case SDLK_BACKSPACE:
-      //TODO Retour en Arriere : Undo
+      if (undo(display) == -1)
+	return -1;
+      break;
+    case SDLK_RSHIFT:
+      if (redo(display) == -1)
+	return -1;
       break;
     case SDLK_s:
       if (save(display->screen, "ressources/out.bmp") == -1)
 	return -1;
       break ;
     case SDLK_c:
-      //TODO Changer de couleurs
+      change_color(display);
       break;
     case SDLK_t:
       //TODO Changerla taille du pinceau
@@ -98,6 +112,7 @@ static int	sdl_loop(t_display *display)
 
 int		init_sdl()
 {
+  SDL_Rect	pos;
   t_display	display;
 
   display.layers = NULL;
@@ -110,6 +125,11 @@ int		init_sdl()
   SDL_WM_SetCaption("Apero", NULL);
   if (new(display.screen) == -1)
     return -1;
+  pos.x = 0;
+  pos.y = 0;
+  if (add_layer(&display.layers, display.screen, &pos) == -1)
+    return -1;
+  display.color_index = 0;
   sdl_loop(&display);
   SDL_Quit();
   return 0;

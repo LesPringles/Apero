@@ -1,18 +1,6 @@
 #include "../includes/display.h"
 #include <math.h>
 
-void setPixel(t_display *display, int x, int y, Uint32 coul)
-{
-  *((Uint32*)(display->screen->pixels) + x + y * WINX) = coul;
-}
-
-void setPixelVerif(t_display *display, int x, int y, Uint32 coul)
-{
-  if (x >= 0 && x < WINX &&
-      y >= 0 && y < WINY)
-    setPixel(display, x, y, coul);
-}
-
 void echangerEntiers(int* x, int* y)
 {
   int t = *x;
@@ -55,7 +43,7 @@ void ligne(t_display *display, int x1, int y1, int x2, int y2, Uint32 coul)
 
   } else {
     /* parcours par l'axe horizontal */
-    
+
     if (x1 > x2) {
       echangerEntiers(&x1, &x2);
       echangerEntiers(&y1, &y2);
@@ -81,7 +69,7 @@ void ligne(t_display *display, int x1, int y1, int x2, int y2, Uint32 coul)
 
       setPixelVerif(display, x, y, coul);
     }
-  }    
+  }
 }
 
 
@@ -100,7 +88,7 @@ static int		display_ligne(t_display *display, SDL_Rect *pos, int x1, int y1, int
 
   if ((square = SDL_CreateRGBSurface(0, 0, 0, 32, 0, 0, 0, 0)) == NULL)
     return -1;
-  
+
   ligne(display, x1, y1, x2, y2, SDL_MapRGB(square->format, 0xFF, 0xFF, 0xFF));
 
   if (SDL_BlitSurface(square, NULL, display->screen, pos) == -1)

@@ -11,7 +11,8 @@ SRCS	= ./sources/main.c		\
 	  ./sources/print_disc.c	\
 	  ./sources/do_action.c		\
 	  ./sources/save.c		\
-	  ./sources/new.c
+	  ./sources/new.c		\
+	  ./sources/tracing.c
 
 OBJS	= $(SRCS:.c=.o)
 
