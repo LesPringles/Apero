@@ -12,6 +12,7 @@ typedef enum	e_current_action
     PRINT_LIGNE,
     PRINT_SQUARE,
     PRINT_RECT,
+	PRINT_RECTEMPTY,
     PRINT_CIRCLE,
     PRINT_DISC
   }		t_current_action;
@@ -54,9 +55,10 @@ int		init_sdl();
 int		display_layers(t_display *display);
 int		add_layer(t_layers_list **list, SDL_Surface *layer, SDL_Rect *pos);
 int		do_action(t_display *display, void *param);
-void		setPixelVerif(t_display *display, int x, int y, Uint32 coul);
+void	setPixelVerif(t_display *display, int x, int y, Uint32 coul);
 
 int		save(SDL_Surface *surface, char *filename);
+int 	open(t_display *display, SDL_Surface *surface);
 int		new(SDL_Surface *surface);
 int		undo(t_display *display);
 int		redo(t_display *display);

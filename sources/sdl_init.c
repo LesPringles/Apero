@@ -33,6 +33,13 @@ static void	change_color(t_display *display)
     display->color_index = 0;
 }
 
+static void change_actions(t_display *display)
+{
+	display->action++;
+	if (display->action > PRINT_DISC)
+		display->action =0;
+}
+
 
 static int	manage_key_event(SDL_Event *event, t_display *display)
 {
@@ -47,19 +54,16 @@ static int	manage_key_event(SDL_Event *event, t_display *display)
     case SDLK_SPACE:
       display->button = RELEASED;
       do_action(display, &event->button);
-      if (display->action == 5)
-	{
-	  display->action = -1;
-	}
-      display->action = display->action + 1;
-
+	  change_actions(display);
       break;
     case SDLK_n:
       if (new(display->screen) == -1)
 	return -1;
       break;
     case SDLK_o:
-      //TODO Ouvrir une image
+	// MArche oas
+      if (open(display, display->screen) == -1)
+	return -1;
       break;
     case SDLK_BACKSPACE:
       if (undo(display) == -1)
@@ -122,6 +126,8 @@ int		init_sdl()
     return -1;
   if ((display.screen = SDL_SetVideoMode(WINX, WINY, 32, SDL_HWSURFACE | SDL_DOUBLEBUF)) == NULL)
     return -1;
+  if (new(display.screen) == -1)
+	return -1;
   SDL_WM_SetCaption("Apero", NULL);
   if (new(display.screen) == -1)
     return -1;

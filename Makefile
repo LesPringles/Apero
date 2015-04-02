@@ -6,17 +6,19 @@ SRCS	= ./sources/main.c		\
 	  ./sources/print_pixel.c	\
 	  ./sources/print_ligne.c	\
 	  ./sources/print_square.c	\
+	  ./sources/print_rectempty.c	\
 	  ./sources/print_rect.c	\
 	  ./sources/print_circle.c	\
 	  ./sources/print_disc.c	\
 	  ./sources/do_action.c		\
-	  ./sources/save.c		\
-	  ./sources/new.c		\
+	  ./sources/save.c			\
+	  ./sources/new.c			\
+	  ./sources/open.c			\
 	  ./sources/tracing.c
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+= -W -Wall -Wextra
+CFLAGS	+= -W -Wall -Wextra -g
 
 OPTIONS	+= -lSDL -lSDL_mixer -lm
 

@@ -75,29 +75,29 @@ int			print_square(t_display *display, void *param)
   if (SDL_BlitSurface(original_screen, NULL, display->screen, &pos_0) == -1)
     return -1;
 
-  if(pos.x > start_pos->x)
-  {
-		if(pos.y > start_pos->y)
-			return display_square(display, start_pos, get_w(start_pos, &pos), get_w(start_pos, &pos));
-
-		else
-		{
-			origin.x = start_pos->x;
-			origin.y = pos.y;
-			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos));
+if(pos.x > start_pos->x) 
+{ 
+	if(pos.y > start_pos->y) // Bas Droite 
+		return display_square(display, start_pos, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+	
+	else // Haut Droite 
+	{ 
+		origin.x = start_pos->x; 
+		origin.y = start_pos->y - get_w(start_pos, &pos); 
+		return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos));
 		}
-
-  }
-  else
-  {
-		if(pos.y > start_pos->y)
-		{
-			origin.x = pos.x;
-			origin.y = start_pos->y;
-			return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos));
-		}
-		else
-			return display_square(display, &pos, get_w(start_pos, &pos), get_w(start_pos, &pos));
-  }
+} else 
+{ 
+	if(pos.y > start_pos->y) // Bas Gauche 
+	{ 
+		origin.x = pos.x; 
+		origin.y = start_pos->y; 
+		return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+	} 
+	else // Haut Gauche 
+		origin.x = start_pos->x - get_w(start_pos, &pos); 
+		origin.y = start_pos->y - get_w(start_pos, &pos); 
+		return display_square(display, &origin, get_w(start_pos, &pos), get_w(start_pos, &pos)); 
+}
 
 }

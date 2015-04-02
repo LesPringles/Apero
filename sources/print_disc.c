@@ -139,7 +139,7 @@ int			print_disc(t_display *display, void *param)
 
       return display_disc(display,
 			    ((pos.x > start_pos->x) ? &pos : start_pos),
-			    mouse->x,
-			    mouse->y,
+			    start_pos->x,
+			    start_pos->y,
 			    get_r(start_pos, &pos));
 }
