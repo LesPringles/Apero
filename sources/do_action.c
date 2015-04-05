@@ -7,7 +7,7 @@ static const t_action	actions[] =
 	{PRINT_LIGNE, &print_ligne},
     {PRINT_SQUARE, &print_square},
     {PRINT_RECT, &print_rect},
-  	{PRINT_RECTEMPTY, &print_rectempty},
+  	//{PRINT_RECTEMPTY, &print_rectempty},
     {PRINT_CIRCLE, &print_circle},
     {PRINT_DISC, &print_disc}
   };

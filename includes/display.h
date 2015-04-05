@@ -12,7 +12,7 @@ typedef enum	e_current_action
     PRINT_LIGNE,
     PRINT_SQUARE,
     PRINT_RECT,
-	PRINT_RECTEMPTY,
+	//PRINT_RECTEMPTY,
     PRINT_CIRCLE,
     PRINT_DISC
   }		t_current_action;

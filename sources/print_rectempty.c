@@ -19,45 +19,6 @@ static int		display_rectempty(t_display *display, SDL_Rect *pos, int w, int h)
     return -1;
   if ((square2 = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0)) == NULL)
 	return -1;
-
-
-  /*
-  SDL_Rect ligneHaut;
-	ligneHaut.x = pos->x-1;
-	ligneHaut.y = pos->y-1;
-	ligneHaut.w = h;
-	ligneHaut.h = 1;
- 
-	SDL_FillRect(square, &ligneHaut, colors[display->color_index]);
- 
-	SDL_Rect ligneDroite;
-	ligneDroite.x = pos->x+h-1;
-	ligneDroite.y = pos->y-1;
-	ligneDroite.w = 1;
-	ligneDroite.h = w;
- 
-	SDL_FillRect(square, &ligneDroite, colors[display->color_index]);
- 
-	SDL_Rect ligneGauche;
-	ligneGauche.x = pos->x-1;
-	ligneGauche.y = pos->y-1;
-	ligneGauche.w = 1;
-	ligneGauche.h = w;
- 
-	SDL_FillRect(square, &ligneGauche, colors[display->color_index]);
- 
-	SDL_Rect ligneBas;
-	ligneBas.x = pos->x-1;
-	ligneBas.y = pos->y+w-1;
-	ligneBas.w = h;
-	ligneBas.h = 1;
- 
-	SDL_FillRect(square, &ligneBas, colors[display->color_index]);
-  */
-
-
-
-
   if (SDL_FillRect(square, NULL, colors[display->color_index]) == -1)
     return -1;
   if (SDL_FillRect(square2, NULL, colors[WHITE]) == -1)
@@ -66,6 +27,8 @@ static int		display_rectempty(t_display *display, SDL_Rect *pos, int w, int h)
     return -1;
   if (SDL_BlitSurface(square2, NULL, display->screen, pos) == -1)
     return -1;
+  /*if (SDL_BlitSurface(square2, NULL, display->screen, pos) == -1)
+    return -1;*/
 
   return SDL_Flip(display->screen);
   return 0;
